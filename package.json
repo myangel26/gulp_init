@@ -17,17 +17,24 @@
   },
   "homepage": "https://github.com/myangel26/gulp_init#readme",
   "devDependencies": {
+    "autoprefixer": "^8.1.0",
     "browser-sync": "^2.23.6",
     "del": "^3.0.0",
     "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^5.0.0",
     "gulp-cache": "^1.0.2",
+    "gulp-clean-css": "^3.9.3",
+    "gulp-cssnano": "^2.1.2",
     "gulp-imagemin": "^4.1.0",
+    "gulp-jshint": "^2.1.0",
+    "gulp-plumber": "^1.2.0",
+    "gulp-postcss": "^7.0.1",
     "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.6.4",
     "gulp-uglify": "^3.0.0",
     "gulp-useref": "^3.1.5",
+    "jshint": "^2.9.5",
     "run-sequence": "^2.2.1"
   },
-  "dependencies": {
-    "gulp-cssnano": "^2.1.2"
-  }
+  "dependencies": {}
 }

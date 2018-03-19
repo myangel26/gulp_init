@@ -9,15 +9,56 @@ var imagemin = require('gulp-imagemin');
 var cache = require('gulp-cache');
 var del = require('del');
 var runSequence = require('run-sequence');
+var autoprefixer = require('gulp-autoprefixer');
+var autoprefixer_02 = require('autoprefixer');
+let cleanCSS = require('gulp-clean-css');
+var postcss = require('gulp-postcss');
+// var plumber = require('gulp-plumber');
+var sourcemaps = require('gulp-sourcemaps');
+var jshint = require('gulp-jshint');
+
+var autoprefixerOptions = {
+    browsers: ['last 2 versions', '> 0%', 'Firefox ESR', 'ie 9']
+}
+
+function errorLog(error) {
+    console.error.bind(error);
+    return;
+}
 
 gulp.task('sass', function () {
     return gulp.src('app/assets/scss/**/*.scss')
-        .pipe(sass())
+        .pipe(sourcemaps.init())
+        .pipe(sass().on('error', sass.logError))
+        // .pipe(cssnano())
+        // .pipe(plumber())
+        .pipe(autoprefixer(autoprefixerOptions))
+        .pipe(cleanCSS())
+        .on('error', errorLog)
+        .pipe(sourcemaps.write())
         .pipe(gulp.dest('app/assets/css'))
         .pipe(browserSync.reload({
             stream: true
         }))
 });
+
+gulp.task('js', function () {
+    return gulp.src(['app/assets/js/**/*.js', '!app/assets/js/**/*.min.js'])
+    .pipe(sourcemaps.init())
+    .pipe(jshint())
+    .pipe(jshint.reporter())
+    .pipe(sourcemaps.write())
+})
+
+// gulp.task('css', function () {
+//     var plugins = [
+//         autoprefixer_02({browsers: ['last 1 version']}),
+//         cssnano()
+//     ];
+//     return gulp.src('app/assets/css/**/*.css')
+//         .pipe(postcss(plugins))
+//         .pipe(gulp.dest('app/assets/css'));
+// });
 
 gulp.task('browserSync', function () {
     browserSync.init({
@@ -75,7 +116,7 @@ gulp.task('cache:clear', function (callback) {
 })
 
 gulp.task('build', function (callback) {
-    runSequence('clean:dist', ['sass', 'useref', 'images', 'fonts'],
+    runSequence('clean:dist', ['sass', 'js', 'useref', 'images', 'fonts'],
         callback
     )
 })
@@ -85,7 +126,7 @@ gulp.task('build', function (callback) {
  * bạn có thể chạy nó đơn giản bằng cách nhập lệnh gulp trong command line.
  */
 gulp.task('default', function (callback) {
-    runSequence(['sass', 'browserSync'], 'watch',
+    runSequence(['sass', 'js', 'browserSync'], 'watch',
         callback
     )
 })

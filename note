@@ -10,6 +10,7 @@ npm install gulp-uglify --save-dev
     . Chúng ta sẽ sử dụng gulp-uglify plugin để minifying các file JavaScript. Chúng ta cũng cần một plugin thứ 2 gọi là gulp-if để đảm bảo chỉ minify các file JavaScript.
 npm install gulp-cssnano
     .Để minify file CSS đã được nối. Chúng ta cần sử dụng package gulp-cssnano.
+    .chu y fai chay no trk khi them prefix
 npm install gulp-imagemin --save-dev
     .Chúng ta sẽ cần sử dụng gulp-imagemin để tối ưu hóa hình ảnh.
 npm install gulp-cache --save-dev
@@ -31,5 +32,15 @@ npm install run-sequence --save-dev
         runSequence('task-one', ['tasks','two','run','in','parallel'], 'task-three', callback);
     });
     -> Trong trường hợp này, Gulp sẽ chạy task-one. Khi task-one hoàn thành, Gulp sẽ chạy tất cả các task còn lại trong mảng tham số thứ 2 đồng thời. Tất cả các task trong tham số thứ 2 phải hoàn thành trước khi task-three có thể chạy.
-.killall node:
+killall node:
     .kill tat ca cac app node dang chay
+npm install --save-dev gulp-autoprefixer
+    .Them prefix vao css
+npm install gulp-clean-css --save-dev
+    .clear space in css
+npm install gulp-plumber --save-dev
+    .Chong breaking by errors from gulp plugins
+npm install gulp-sourcemaps --save-dev
+    .dung de debug trong dev-tool
+npm install jshint gulp-jshint --save-dev
+    .Kiem tra code javascript
