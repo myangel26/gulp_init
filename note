@@ -1,0 +1,35 @@
+https://techmaster.vn/posts/34204/gulp-cho-nguoi-moi-bat-dau
+
+npm install gulp --save-dev
+npm install gulp-sass --save-dev
+npm install browser-sync --save-dev
+    .làm cho Gulp reload lại trình duyệt bất cứ khi nào chúng ta lưu một file .scss với sự trợ giúp của Browser Sync
+npm install gulp-useref --save-dev
+    .Noi file , nhung se khong minifying 
+npm install gulp-uglify --save-dev 
+    . Chúng ta sẽ sử dụng gulp-uglify plugin để minifying các file JavaScript. Chúng ta cũng cần một plugin thứ 2 gọi là gulp-if để đảm bảo chỉ minify các file JavaScript.
+npm install gulp-cssnano
+    .Để minify file CSS đã được nối. Chúng ta cần sử dụng package gulp-cssnano.
+npm install gulp-imagemin --save-dev
+    .Chúng ta sẽ cần sử dụng gulp-imagemin để tối ưu hóa hình ảnh.
+npm install gulp-cache --save-dev
+    .Tối ưu hóa các hình ảnh, là một tiến trình cực kỳ chậm bạn sẽ không muốn lặp lại trừ khi cần thiết
+    . Để làm điều này chúng ta có thể sử dụng gulp-cache plugin.
+npm install del --save-dev
+    .Tự động xóa các file đã tạo ra. Quá trình được gọi làm sạch (cleaning) (hay đơn giản là xóa các file)
+npm install run-sequence --save-dev
+    .gulp.task('build', [`clean`, `sass`, `useref`, `images`, `fonts`], function (){
+        console.log('Building files');
+    })
+    .Thật không may, chúng ta không thể viết task build theo cách này bởi vì Gulp chạy tất cả các task trong tham số thứ 2 đồng thời.
+    .Đây là plugin để chạy các task tuần tự.
+    .gulp.task('task-name', function(callback) {
+        runSequence('task-one', 'task-two', 'task-three', callback);
+    });
+    -> Khi task-name được gọi, Gulp sẽ chạy task-one đầu tiên, Khi task-one kết thúc, Gulp sẽ tự động bắt đầu task-two. Cuối cùng, khi task-two hoàn thành, Gulp sẽ chạy task-three.
+    gulp.task('task-name', function(callback) {
+        runSequence('task-one', ['tasks','two','run','in','parallel'], 'task-three', callback);
+    });
+    -> Trong trường hợp này, Gulp sẽ chạy task-one. Khi task-one hoàn thành, Gulp sẽ chạy tất cả các task còn lại trong mảng tham số thứ 2 đồng thời. Tất cả các task trong tham số thứ 2 phải hoàn thành trước khi task-three có thể chạy.
+.killall node:
+    .kill tat ca cac app node dang chay

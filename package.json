@@ -1,0 +1,33 @@
+{
+  "name": "gulp_start",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/myangel26/gulp_init.git"
+  },
+  "author": "senji",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/myangel26/gulp_init/issues"
+  },
+  "homepage": "https://github.com/myangel26/gulp_init#readme",
+  "devDependencies": {
+    "browser-sync": "^2.23.6",
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-cache": "^1.0.2",
+    "gulp-imagemin": "^4.1.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglify": "^3.0.0",
+    "gulp-useref": "^3.1.5",
+    "run-sequence": "^2.2.1"
+  },
+  "dependencies": {
+    "gulp-cssnano": "^2.1.2"
+  }
+}
