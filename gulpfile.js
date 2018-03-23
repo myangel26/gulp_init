@@ -16,6 +16,7 @@ var postcss = require('gulp-postcss');
 // var plumber = require('gulp-plumber');
 var sourcemaps = require('gulp-sourcemaps');
 var jshint = require('gulp-jshint');
+var minify = require('gulp-minifier');
 
 var autoprefixerOptions = {
     browsers: ['last 2 versions', '> 0%', 'Firefox ESR', 'ie 9']
@@ -129,4 +130,23 @@ gulp.task('default', function (callback) {
     runSequence(['sass', 'js', 'browserSync'], 'watch',
         callback
     )
-})
+});
+
+gulp.task('example', function() {
+    return gulp.src(['app/assets/js/**/*.js', '!app/assets/js/**/*.min.js'])
+    .pipe(minify({
+      minify: true,
+      minifyHTML: {
+        collapseWhitespace: true,
+        conservativeCollapse: true,
+      },
+      minifyJS: {
+        sourceMap: true
+      },
+      minifyCSS: true,
+      getKeptComment: function (content, filePath) {
+          var m = content.match(/\/\*![\s\S]*?\*\//img);
+          return m && m.join('\n') + '\n' || '';
+      }
+    })).pipe(gulp.dest('dist'));
+  });

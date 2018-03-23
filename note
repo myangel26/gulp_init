@@ -44,3 +44,5 @@ npm install gulp-sourcemaps --save-dev
     .dung de debug trong dev-tool
 npm install jshint gulp-jshint --save-dev
     .Kiem tra code javascript
+npm i gulp-minifier --save-dev 
+    .Giong gulp-uglify
