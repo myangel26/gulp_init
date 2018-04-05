@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- // $(function(){ // }); // $(document).ready(function(){ // }); -->
+    <!-- (function () {  })(); -->
+    <input type="button" value="Submit" onclick="loadScript()"></input>
+    <input type="button" value="Log in" onclick="logIn()"></input>
+
+    <script type="text/javascript" src="node_modules/crypto-js/crypto-js.js"></script>
+
+    <script type="text/javascript">
+        function loadScript() {
+            var data_send = encrypt(data);
+            console.log(data_send);
+            var de = decrypt(data_send);
+            console.log(de);
+
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    console.log(JSON.parse(this.responseText));
+                }
+            };
+            xhttp.open("POST", "http://localhost:3000/me", true);
+            // xhttp.setRequestHeader("Content-type", "application/json;charset=UTF-8");
+            xhttp.setRequestHeader("Authorization",
+                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YWM1ZDJjY2NhYWJiZDA0OWZhYWMzNmUiLCJlbWFpbCI6InNlbmppX21hc3RlckBnbWFpbC5jb20iLCJwYXNzd29yZCI6ImhhaGFoYSIsIl9fdiI6MCwiaWF0IjoxNTIyOTEzOTk2LCJleHAiOjE1MjMwODY3OTZ9.MJ0evBKbeT9TaF6_rSFlweNrhQZ1SMnntOmXlGfOR18"
+            )
+            // xhttp.send(JSON.stringify());
+            xhttp.send(JSON.stringify(data_send));
+        }
+
+        function logIn() {
+            var data = {
+                "email": "senji_master@gmail.com",
+                "password": "hahaha"
+            }
+
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    console.log(JSON.parse(this.responseText));
+                }
+            };
+            xhttp.open("POST", "http://localhost:3000/signin", true);
+            xhttp.setRequestHeader("Content-type", "application/json;charset=UTF-8");
+            // xhttp.setRequestHeader("Authorization",
+            //     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YWM1Y2UwYWM3ZjU3NTAzZDhlOWUxNDAiLCJlbWFpbCI6InNlbmppX21hc3RlckBnbWFpbC5jb20iLCJwYXNzd29yZCI6ImhhaGFoYSIsIl9fdiI6MCwiaWF0IjoxNTIyOTEyNzc4LCJleHAiOjE1MjMwODU1Nzh9.7ejgYNOuo0XKtfizTyRjauQNf00lYWB-gfVQxLKPyZ0"
+            // )
+            // xhttp.send(JSON.stringify());
+            xhttp.send(JSON.stringify(data));
+        }
+
+        // encrypt data and send to server
+        var data = {
+            'username': 'Senji',
+            'permission': true,
+            'level': 1,
+            'vehicle': ['car', 'moto', 'footer'],
+            'profile': {
+                'home': 1,
+                'child': 2,
+                'child_name': ['Josh', 'Phil']
+            }
+        };
+
+        
+    </script>
+</body>
+
+</html>

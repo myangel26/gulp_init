@@ -46,3 +46,27 @@ npm install jshint gulp-jshint --save-dev
     .Kiem tra code javascript
 npm i gulp-minifier --save-dev 
     .Giong gulp-uglify
+
+
+
+Install mongo database in Macos
+sudo chown -R "$USER":admin /usr/local
+    . Neu bi dinh quyen premission tren macos hi dung brew
+
+devDependencies:
+    npm install: van se cai tat ca package trong day tru khi them --production se ko cai
+    npm install "$package" : se ko cai  tru khi them --dev moi cai
+
+//Build Rest api
+npm install express --save
+
+npm i jsonwebtoken --save
+
+npm install body-parser --save
+
+//example encrypt: https://github.com/chris-rock/node-crypto-examples
+
+npm install crypto-js --save
+=> khong nen ma hoa json o client r gui
+
+https://github.com/expressjs/cors
